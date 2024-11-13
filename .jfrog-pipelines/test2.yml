@@ -1,0 +1,42 @@
+# resources:
+#   - name: test_monitor_uber_pipelines
+#     type: CronTrigger
+#     configuration:
+#       interval: "*/1 * * * *"
+#       branches:
+#         include: "master"
+
+pipelines:
+  - name: test_monitor
+    configuration:
+      jfrogCliVersion: 2
+      retentionPolicy:
+       maxAgeDays: 30
+       minRuns: 10
+      chronological: true
+      environmentVariables:
+        readOnly:
+          JFROG_TASK_DEBUG: "true"
+          JFROG_CLI_LOG_LEVEL: info
+
+    steps:
+      - name: test_monitor
+        type: Bash
+        configuration:
+          integrations:
+            - name: entplus_deployer
+            - name: test_uberpipelines
+            - name: test_dptw_pat
+          inputResources:
+            - name: test_monitor_uber_pipelines
+          nodePool: default_k8s
+          timeoutSeconds: 300
+        execution:
+          onExecute:
+            # Run task
+            - task: monitor-pipelines@latest
+              id: monitor-uber-pipelines
+              repository: pipe-tasks-dev-local
+              input:
+                pipelinesDetailsIntegration: "test_uberpipelines"
+                projectsAccessTokenIntegration: "test_dptw_pat"
