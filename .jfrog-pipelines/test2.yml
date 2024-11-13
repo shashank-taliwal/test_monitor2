@@ -34,7 +34,7 @@ pipelines:
         execution:
           onExecute:
             # Run task
-            - task: monitor-pipelines@latest
+            - task: jfrog/monitor-pipelines@latest
               id: monitor-uber-pipelines
               repository: pipe-tasks-dev-local
               input:
