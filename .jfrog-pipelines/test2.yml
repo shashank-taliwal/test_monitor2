@@ -45,6 +45,6 @@ pipelines:
                 incidentCreationSlackMessage: incidentCreationSlackMessage
                 incidentUpdateSlackMessage: incidentUpdateSlackMessage
           onComplete:
-           - echo $status
-           - echo $incidentCreationSlackMessage
-           - echo $incidentUpdateSlackMessage
+            - echo $status
+            - echo $incidentCreationSlackMessage
+            - echo $incidentUpdateSlackMessage
