@@ -29,7 +29,7 @@ pipelines:
             - name: test_dptw_pat
           # inputResources:
           #   - name: test_monitor_uber_pipelines
-          nodePool: default_k8s
+          # nodePool: default_k8s
           timeoutSeconds: 300
         execution:
           onExecute:
