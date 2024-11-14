@@ -35,12 +35,14 @@ pipelines:
           onExecute:
             # Run task
             - task: jfrog/monitor-pipelines@latest
-              id: monitor-uber-pipelines
+              id: monitor_uber_pipelines
               repository: pipe-tasks-dev-local
               input:
                 pipelinesDetailsIntegration: "test_uberpipelines"
                 projectsAccessTokenIntegration: "test_dptw_pat"
+              output:
+                status
           onComplete:
-            - echo ${out_monitor-uber-pipelines_status}
-            - echo ${out_monitor-uber-pipelines_incidentCreationSlackMessage}
-            - echo ${out_monitor-uber-pipelines_incidentUpdateSlackMessage}
+            - echo $OUT_monitor_uber_pipelines_status
+            - echo $OUT_monitor_uber_pipelines_status_incidentCreationSlackMessage
+            - echo $OUT_monitor_uber_pipelines_status_incidentUpdateSlackMessage
