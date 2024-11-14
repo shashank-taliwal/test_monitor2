@@ -40,8 +40,6 @@ pipelines:
               input:
                 pipelinesDetailsIntegration: "test_uberpipelines"
                 projectsAccessTokenIntegration: "test_dptw_pat"
-              output:
-                status
           onComplete:
             - echo $OUT_monitor_uber_pipelines_status
             - echo $OUT_monitor_uber_pipelines_status_incidentCreationSlackMessage
