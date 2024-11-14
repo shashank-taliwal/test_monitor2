@@ -42,5 +42,5 @@ pipelines:
                 projectsAccessTokenIntegration: "test_dptw_pat"
           onComplete:
             - echo $OUT_monitor_uber_pipelines_status
-            - echo $OUT_monitor_uber_pipelines_status_incidentCreationSlackMessage
-            - echo $OUT_monitor_uber_pipelines_status_incidentUpdateSlackMessage
+            - echo $OUT_monitor_uber_pipelines_incidentCreationSlackMessage
+            - echo $OUT_monitor_uber_pipelines_incidentUpdateSlackMessage
