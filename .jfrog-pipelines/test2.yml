@@ -41,6 +41,6 @@ pipelines:
                 pipelinesDetailsIntegration: "test_uberpipelines"
                 projectsAccessTokenIntegration: "test_dptw_pat"
           onComplete:
-            - echo ${monitor-uber-pipelines_status}
-            - echo ${monitor-uber-pipelines_incidentCreationSlackMessage}
-            - echo ${monitor-uber-pipelines_incidentUpdateSlackMessage}
+            - echo ${out_monitor-uber-pipelines_status}
+            - echo ${out_monitor-uber-pipelines_incidentCreationSlackMessage}
+            - echo ${out_monitor-uber-pipelines_incidentUpdateSlackMessage}
