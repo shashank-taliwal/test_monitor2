@@ -1,0 +1,16 @@
+pipelines:
+  - name: test_task
+    steps:
+      - name: test_task
+        type: Bash
+        configuration:
+          integrations:
+            - name: jpat
+        execution:
+          onExecute:
+            - task: jfrog/slack-notify@latest
+              id: monitor_task_pipelines
+              repository: pipe-tasks-dev-local
+              input:
+                slackIntegration: "slack_int"
+                message: "Hello, World!"
